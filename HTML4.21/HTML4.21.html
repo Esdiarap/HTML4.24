@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML4.21</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+        }
+        .aside,
+        .article,
+        .nav-bar{
+            height: 100%;
+            display: flex;
+        }
+        .aside{
+            width: 100px;
+            background-color: #1d2531;
+            position: relative;
+        }
+        .nav-bar{
+            width: 250px;
+            background-color: #222c3c;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .article{
+            width: 100%;
+            flex-grow: 1;
+        }
+        .per-infor,
+        .per-mes{
+            height: 100%;
+        }
+        .per-infor{
+            width: 400px;
+        }
+        .per-mes{
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+        .aside-pic{
+            background-image: url("img/左1.png");
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100px;
+            background-position: 20px;
+        }
+        .aside-pic:nth-of-type(2){
+            background-image: url("img/左2.png");
+        }
+        .aside-pic:nth-of-type(3){
+            background-image: url("img/左3.png");
+        }
+        .aside-pic:nth-of-type(4){
+            background-image: url("img/左4.png");
+        }
+        .aside-down{
+            position: absolute;
+            bottom: 0;
+            background-image: url("img/左5.png");
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 56px;
+            background-position: 26px 20px;
+        }
+        .nav-con{
+            width: 100%;
+            height: 225px;
+            padding-left: 8px;
+        }
+        .nav-box:first-child{
+            margin-top: 20px;
+        }
+        .nav-con input{
+            background-image: url("img/中1.png");
+            background-repeat: no-repeat;
+            background-position: 100% 0;
+            border: none;
+            width: 100%;
+            background-color: transparent;
+            height: 1rem;
+        }
+        .nav-con input::placeholder{
+            color: #576375;
+            font-size: 1rem;
+        }
+        .nav-con ul{
+            color: white;
+            margin-top: 20px;
+        }
+        .nav-con ul li{
+            line-height: 2rem;
+        }
+        .first ul li:nth-of-type(2),
+        .third ul li:nth-of-type(1){
+            background-image: url("img/中2.png");
+            background-repeat: no-repeat;
+            background-position: 100% 4px;
+            position: relative;
+        }
+        .first li span,
+        .third li span{
+            position: absolute;
+            right: 7px;
+        }
+        .third li:nth-of-type(3){
+            background-image: url("img/中3.png");
+            background-repeat: no-repeat;
+            background-position: 100% 4px;
+        }
+        .third{
+            margin-top: -35px;
+        }
+        .nav-p{
+            color: white;
+            width: 100%;
+            padding-left: 8px;
+            margin-top: 14px;
+        }
+        .nav-p span{
+            padding-left: 2px;
+        }
+        .nav-bot-pic{
+            background-image: url("img/中4.png");
+            background-repeat: no-repeat;
+            width: 190px;
+            height: 4px;
+            position: absolute;
+            bottom: 25px;
+            left: 28px;
+        }
+        .per-inf-top{
+            position: absolute;
+            box-sizing: border-box;
+            line-height: 60px;
+            padding-left: 30px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #e6e9ec;
+        }
+        .per-mes-top{
+            position: absolute;
+            top: 0;
+            right: 0;
+            box-sizing: border-box;
+            width: 250px;
+            line-height: 60px;
+            background-image: url("img/右上.png");
+            background-repeat: no-repeat;
+            background-position: 0 5px;
+            padding-left: 65px;
+            border-bottom: 1px solid #e6e9ec;
+        }
+        .per-mes-top>p{
+            line-height: 60px;
+        }
+        .per-mes-top p .span1{
+            line-height: 1.2rem;
+            display: inline-block;
+            vertical-align: middle;
+            color: #2399f1;
+        }
+        .span2{
+            color: #b5b5b5;
+        }
+        .per-mes-top-bg{
+            background-image: url("img/右上2.png");
+            width: 11px;
+            height: 7px;
+            position: absolute;
+            top: 26px;
+            right: 31px;
+        }
+        .per-inf-con{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+        .seach-bar{
+            width: 100%;
+            height: 70px;
+            outline: 1px solid #e6e9ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .seach-bar input{
+            border: none;
+            width: 80%;
+            height: 2rem;
+            padding-left: 1rem;
+            background-image: url("img/右左1.png");
+            background-repeat: no-repeat;
+            background-position: 95% 6px;
+        }
+        .seach-bar input::placeholder{
+            color: #b2bac8;
+        }
+        .per-inf{
+            width: 100%;
+            height: 130px;
+            box-sizing: border-box;
+            padding: 0 30px;
+            outline: 1px solid #e6e9ec;
+        }
+        .per-inf > div{
+            width: 100%;
+            line-height: 46px;
+            background-image: url("img/右左3.png");
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .per-inf >div p{
+            display: inline-block;
+            padding-left: 60px;
+            line-height: 46px;
+            background-image: url("img/右左2.png");
+            background-repeat: no-repeat;
+            background-position: 50px 12px;
+        }
+        .per-inf > div .span3{
+            line-height: 1.1rem;
+            display: inline-block;
+            vertical-align: middle;
+            color: #00aaff;
+        }
+        .span4{
+            color: #b5b5b5;
+            font-size: 0.8rem;
+        }
+        .per-inf div > span{
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #7f8fa4;
+        }
+        .per-inf > p{
+            font-size: 1rem;
+            margin-top: 5px;
+            padding-right: 16px;
+        }
+        .p1{
+            background-image: url("img/中2.png");
+            background-repeat: no-repeat;
+            background-position: 100% 20px;
+        }
+        .per-mes-con{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 60px;
+        }
+        .per-mes-top2{
+            box-sizing: border-box;
+            width: 100%;
+            line-height: 70px;
+            outline: 1px solid #e6e9ec;
+            padding-left: 30px;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .top2-pic1{
+            background-image: url("img/右右1.png");
+            background-repeat: no-repeat;
+            display: inline-block;
+            height: 8px;
+            width: 8px;
+            padding-bottom: 4px;
+        }
+        .top2-pic{
+            width: 305px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+        }
+        .top2-pic,
+        .top2-pic2,
+        .top2-pic3,
+        .top2-pic4{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .top2-pic2{
+            background-image: url("img/右右2.png");
+            background-repeat: no-repeat;
+            width: 109px;
+            height: 70px;
+            background-position: 0 14px;
+        }
+        .top2-pic3{
+            background-image: url("img/右右3.png");
+            background-repeat: no-repeat;
+            height: 70px;
+            width: 1px;
+            margin: 0 15px;
+            background-position: 0 14px;
+        }
+        .top2-pic4{
+            background-image: url("img/右右4.png");
+            background-repeat: no-repeat;
+            width: 150px;
+            line-height: 32px;
+            font-size: 1.2rem;
+            background-position: 70px 0;
+        }
+        .per-mes-down{
+            width: 100%;
+        }
+        .type-one{
+            width: 100%;
+            height: 310px;
+            padding-left: 30px;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        .first{
+            /*box-sizing: border-box;*/
+            margin-top: 30px;
+            width: 100%;
+            background-image: url("img/右左3.png");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="aside">
+    <div class="aside-pic"></div>
+    <div class="aside-pic"></div>
+    <div class="aside-pic"></div>
+    <div class="aside-pic"></div>
+    <div class="aside-down"></div>
+</div>
+<div class="nav-bar">
+    <div class="nav-box">
+        <div class="nav-con first">
+            <input type="text" placeholder="MENU">
+            <ul>
+                <li>Overview</li>
+                <li>Sales<span>54</span></li>
+                <li>Your Staff</li>
+                <li>Analytics & Targetting</li>
+                <li>What's New</li>
+            </ul>
+        </div>
+        <div class="nav-con second">
+            <input type="text" placeholder="YOUR PRODUCTS">
+            <ul>
+                <li>Books</li>
+                <li>Tutorials</li>
+                <li>Stocks</li>
+                <li>Infographics</li>
+            </ul>
+        </div>
+        <div class="nav-con third">
+            <input type="text" placeholder="DASHBOARD">
+            <ul>
+                <li>Messages<span>21</span></li>
+                <li>Connections</li>
+                <li>Integrations</li>
+                <li>Account Settings</li>
+                <li>App Settings</li>
+            </ul>
+        </div>
+        <p class="nav-p">Monthly Goals <span>$580/$3200</span></p>
+        <div class="nav-bot-pic"></div>
+    </div>
+</div>
+<div class="article">
+    <div class="per-infor">
+        <div class="per-inf-top">Messages</div>
+        <div class="per-inf-con">
+            <div class="seach-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="per-inf">
+                <div>
+                    <p><span class="span3">Bessie Berry<br><span class="span4">Twitter</span></span></p>
+                    <span>3m</span>
+                </div>
+                <p class="p1">I pay for the 4MB/sec down, 512KB/sec up from O2. In fact, it's relatively quick and stable...</p>
+            </div>
+            <div class="per-inf">
+                <div>
+                    <p><span class="span3">Bessie Berry<br><span class="span4">Twitter</span></span></p>
+                    <span>3m</span>
+                </div>
+                <p>I pay for the 4MB/sec down, 512KB/sec up from O2. In fact, it's relatively quick and stable...</p>
+            </div>
+            <div class="per-inf">
+                <div>
+                    <p><span class="span3">Bessie Berry<br><span class="span4">Twitter</span></span></p>
+                    <span>3m</span>
+                </div>
+                <p>I pay for the 4MB/sec down, 512KB/sec up from O2. In fact, it's relatively quick and stable...</p>
+            </div>
+            <div class="per-inf">
+                <div>
+                    <p><span class="span3">Bessie Berry<br><span class="span4">Twitter</span></span></p>
+                    <span>3m</span>
+                </div>
+                <p>I pay for the 4MB/sec down, 512KB/sec up from O2. In fact, it's relatively quick and stable...</p>
+            </div>
+        </div>
+    </div>
+    <div class="per-mes">
+        <div class="per-mes-top">
+            <p><span class="span1">Jordan J.<br><span class="span2">Administrator</span></span></p>
+            <div class="per-mes-top-bg"></div>
+        </div>
+        <div class="per-mes-con">
+            <div class="per-mes-top2">
+                Bessie Berry
+                <div class="top2-pic1"></div>
+                <div class="top2-pic">
+                    <div class="top2-pic2"> </div>
+                    <div class="top2-pic3"></div>
+                    <div class="top2-pic4">1 of 28</div>
+                </div>
+            </div>
+            <div class="per-mes-down">
+                <div class="type-one">
+                    <div class="first">
+                        <p>Bessie Berry <span>8:31 AM</span></p>
+                    </div>
+                    <div class="second"></div>
+                </div>
+                <div class="type-two"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
